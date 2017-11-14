@@ -7,4 +7,15 @@
 var getElementsByClassName = function(className
 ) {
   // your code here
+  var elementByClassName = [];
+  function checker(node) {
+    if((node.classList) && (node.classList.contains(className))) {
+      elementByClassName.push(node);
+    }
+    node.childNodes.forEach(function(eachNode){
+      checker(eachNode);
+    });
+  }
+  checker(document.body);
+  return elementByClassName;
 };
